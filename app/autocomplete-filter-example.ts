@@ -48,7 +48,7 @@ export class AutocompleteFilterExample {
   initRows() {
     return this._fb.group({
       name: [''],
-      myControl:['']
+      myControl:this.myControl
     });
   }
 

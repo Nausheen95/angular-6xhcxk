@@ -1,0 +1,50 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+    <form [formGroup]="invoiceForm">
+    <table border=1>
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Action</th>
+      </thead>
+      <tbody formArrayName="Rows">
+        <tr *ngFor="let itemrow of invoiceForm.controls.Rows.controls; let i=index;let l=last"
+          [formGroupName]="i">
+          <td>{{i+1}}</td>
+          <td>
+            <input formControlName="name" class="form-control">
+          </td>
+          <td>
+          <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <button type="button" (click)="addNewRow()" class="btn btn-primary">Add new Row</button>
+  <br/>
+  <br/>
+  <pre>{{invoiceForm.value | json}}</pre>
+  
